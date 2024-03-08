@@ -10,8 +10,9 @@ build:
 # Bind mount to watch code files and live-reload (local dev only)
 # Todo: something like src="$(shell pwd)./app" might better?
 # Todo: use env vars to check for dev vs prod (vs test), etc.
+# Todo: use docker-compose instead! ;¬)
 up:
-	docker run -d -p 127.0.0.1:8000:80 --mount type=bind,src=./app,target=/code/app --name $(CONTAINER_NAME) $(IMAGE_NAME)
+	docker run -d -p 127.0.0.1:8000:80 --network some-network --network-alias fastapi-server --mount type=bind,src=./app,target=/code/app --name $(CONTAINER_NAME) $(IMAGE_NAME)
 
 down:
 	docker rm -f $(CONTAINER_NAME)
