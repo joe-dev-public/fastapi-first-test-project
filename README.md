@@ -1,10 +1,25 @@
 Working through some of the [FastAPI tutorial](https://fastapi.tiangolo.com/tutorial/) to learn a bit about it and build some kind of test project.
 
-Start the server with:
+To start:
 
-`uvicorn main:app --reload`
+- In the Postgres Docker repo dir: `make up`
+- In this repo dir: `make up`
+  - (Likewise, to stop: `make down`)
+- In the frontend repo dir: `npm run dev`
+- Visit whatever that tells you (probably http://localhost:5173)
 
-Where:
+(See `Makefile` for more.)
 
-- `main` is the filename of the Python module (i.e. `main.py`)
-- `app` is the FastAPI class instance (i.e. `app = FastAPI()`).
+<details>
+  <summary>
+    Old starting instructions
+  </summary>
+  Start the server with:
+
+  `uvicorn main:app --reload`
+
+  Where:
+
+  - `main` is the filename of the Python module (i.e. `main.py`)
+  - `app` is the FastAPI class instance (i.e. `app = FastAPI()`).
+</details>
