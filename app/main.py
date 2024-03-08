@@ -1,6 +1,12 @@
 from typing import List, Union
 
+# Debugging stuff:
+# import uvicorn
+
 from fastapi import Depends, FastAPI, HTTPException
+
+# Debugging stuff:
+# from fastapi import Depends, FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 
@@ -43,6 +49,15 @@ app.add_middleware(
     # Yes, this is important! Otherwise only GET is allowed:
     allow_methods=["*"],
 )
+
+
+# Kinda messy debugging/logging of raw request headers:
+# @app.middleware("http")
+# async def do_something(request: Request, call_next):
+#     print("request.headers")
+#     print(request.headers)
+#     response = await call_next(request)
+#     return response
 
 
 # Yield an independent db session/connection for each request
@@ -122,3 +137,13 @@ def add_release(release: schemas.ReleaseCreate, db: Session = Depends(get_db)):
             detail=f"Release with title '{release.title}' already exists",
         )
     return crud.create_release(db=db, release=release)
+
+
+# Debugging stuff:
+# If we include the lines below, we can start our app by running
+# "python main.py" rather than "uvicorn main:app --reload". A reason to do
+# this is for debugging workflow: https://fastapi.tiangolo.com/tutorial/debugging/
+# (Note: we need the "main:app" syntax, rather than just .run(app, ...) for
+# this to work with reload=True)
+# if __name__ == "__main__":
+#     uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
