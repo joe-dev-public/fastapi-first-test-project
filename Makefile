@@ -16,3 +16,9 @@ up:
 
 down:
 	docker rm -f $(CONTAINER_NAME)
+
+bash:
+	docker exec -it $(CONTAINER_NAME) bash
+
+logs:
+	docker logs $(CONTAINER_NAME)
