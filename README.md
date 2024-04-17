@@ -12,6 +12,28 @@ To start:
 
 (See `Makefile` for more.)
 
+## File structure
+
+```
+├── Dockerfile
+├── Makefile
+├── README.md
+├── app
+│   ├── main.py - setup & endpoints/routes (for now)
+│   └── sql_app
+│       ├── crud.py - functions to interact with db[0]
+│       ├── database.py - db connection stuff
+│       ├── models.py - db/SQLAlchemy models
+│       └── schemas.py - Pydantic models[1]
+└── requirements.txt
+
+```
+
+[0] Create x, delete y, update z, etc.
+
+[1] For "data validation, conversion, and documentation" ([source](https://fastapi.tiangolo.com/tutorial/sql-databases/#create-sqlalchemy-models-from-the-base-class))
+
+
 <details>
   <summary>
     Old starting instructions

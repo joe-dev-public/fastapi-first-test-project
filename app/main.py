@@ -42,7 +42,7 @@ my_origins = [
     "http://localhost:5173",
 ]
 
-# Todo: can we remove CORS stuff if we're running in Docker?
+# Note: doesn't look like we can remove CORS stuff if we run in Docker!
 app.add_middleware(
     CORSMiddleware,
     allow_origins=my_origins,
